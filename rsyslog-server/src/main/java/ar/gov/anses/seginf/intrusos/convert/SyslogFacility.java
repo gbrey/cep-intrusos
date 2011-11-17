@@ -1,0 +1,28 @@
+package ar.gov.anses.seginf.intrusos.convert;
+
+public enum SyslogFacility {
+    KERN,
+    USER,
+    MAIL,
+    DAEMON,
+    AUTH,
+    SYSLOG,
+    LPR,
+    NEWS,
+    UUCP,
+    CRON,
+    AUTHPRIV,
+    FTP,
+    RESERVED_12,
+    RESERVED_13,
+    RESERVED_14,
+    RESERVED_15,
+    LOCAL0,
+    LOCAL1,
+    LOCAL2,
+    LOCAL3,
+    LOCAL4,
+    LOCAL5,
+    LOCAL6,
+    LOCAL7,
+}
