@@ -240,7 +240,7 @@ public final class Rfc3164SyslogConverter {
 
         syslogMessage.setTimestamp(calendar.getTime());
         
-        String text = msg.substring(0, msg.length()-2);
+        String text = msg.substring(0, msg.length()-1);
         syslogMessage.setLogMessage(String.valueOf(text));
         //System.out.println("Syslog message : {}"+syslogMessage.toString());
 

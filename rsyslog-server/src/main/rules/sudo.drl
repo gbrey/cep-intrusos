@@ -1,0 +1,20 @@
+package org.drools.examples.twittercbr
+
+import ar.gov.anses.seginf.intrusos.parser.SyslogContentParser
+import java.text.MessageFormat
+
+declare SyslogEvent
+    @role( event )
+    @timestamp( createdAt )
+    @expires( 2s )
+end
+
+rule "Dump messages"
+when
+    $s : SyslogEvent() from entry-point "syslog"
+then
+    System.out.println( MessageFormat.format( "[{0,time,full}] @{1}",
+                                              $s.getLogReporter(),
+                                              $s.getUser() ) );
+end
+

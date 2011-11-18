@@ -14,15 +14,23 @@ import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 public class RSyslogServer {
 
 	public static void main(String[] args) throws Exception {
+		//Solo para UDP
 //		DatagramChannelFactory f = new NioDatagramChannelFactory(Executors.newCachedThreadPool());
+		
+		//Solo TCP
 		NioServerSocketChannelFactory f = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool());
 
 		ConnectionlessBootstrap bootstrap = new ConnectionlessBootstrap(f);
+		
+		//Start cep engine
+		final CEPEngine engine = new CEPEngine();
+		engine.initEngine();
 
 		// Set up the pipeline factory.
 		bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
 			public ChannelPipeline getPipeline() throws Exception {
-				return Channels.pipeline(new RSyslogServerHandler());
+				
+				return Channels.pipeline(new RSyslogServerHandler(engine.ep));
 			}
 		});
 
